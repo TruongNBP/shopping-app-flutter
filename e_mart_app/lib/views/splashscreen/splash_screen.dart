@@ -1,47 +1,57 @@
+import 'package:e_mart_app/constants/Colors/colors.dart';
+import 'package:e_mart_app/views/auth_screens/login_screen.dart';
+import 'package:e_mart_app/widgets_common/applogo_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  changeScreen(){
+    Future.delayed(const Duration(seconds: 2),(){
+      Get.to(() => const LoginScreen());
+    });
+  }
+
+  @override
+  void initState() {
+    changeScreen();
+    super.initState();
+  }
+  
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Login Screen',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-          ),
-        ),
-        backgroundColor: Colors.blue,
-      ),
-      body: Container(
-        padding: const EdgeInsets.fromLTRB(20, 100, 20, 2),
+      backgroundColor: Colors.white,
+      body: Center(
         child: Column(
           children: [
-            Icon(
-              Icons.person_add_rounded,
-              size: 120,
-              ),
-            TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                hintText: 'Enter your email',
-                icon: Icon(Icons.email),
-              ),
+            const SizedBox(height: 220),
+            applogoWidget(140, 140),
+            apptitleWidget(60, 170),
+            const Text(
+              "version 1.0.0",
+              style: TextStyle(fontSize: 15, color: MainColor),
+            ),
+            const Spacer(),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("@design by ",
+                    style: TextStyle(fontSize: 15, color: MainColor)),
+                Text(
+                  "NBPT",
+                  style: TextStyle(fontSize: 17, color: MainColor, fontWeight: FontWeight.bold),
+                )
+              ],
             ),
             const SizedBox(height: 20),
-            TextFormField(
-              obscureText: true,
-              decoration: const InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter your password',
-                icon: Icon(Icons.lock),
-              ),
-            ),
-            SizedBox(height: 40),
-            Raised(onPressed: (){}, child: ,),
           ],
         ),
       ),
