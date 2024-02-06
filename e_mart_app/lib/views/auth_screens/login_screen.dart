@@ -17,3 +17,12 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+class ClassName extends InheritedWidget {
+  const ClassName({super.key, required super.child});
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    throw UnimplementedError();
+  }
+  
+}
